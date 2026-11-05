@@ -33,6 +33,7 @@ import { BrandEmblem } from '../components/BrandEmblem';
 import { SpotlightCard } from '../components/SpotlightCard';
 import { HeroSpotlight } from '../components/HeroSpotlight';
 import { MagneticButton } from '../components/MagneticButton';
+import { IndustryMarquee } from '../components/IndustryMarquee';
 import { SocraticReasoningSandbox } from '../components/SocraticReasoningSandbox';
 import { MentorshipStepperJourney } from '../components/MentorshipStepperJourney';
 import { NavigationPage } from '../types';
@@ -216,36 +217,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
             </MagneticButton>
           </motion.div>
 
-          {/* Trust Signal Bar — Clean Static Grid (Replaces Cheap Marquee) */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="pt-10 sm:pt-14"
-          >
-            <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#A09BA8] dark:text-[#6C6880] mb-5">
-              Designed for competitive examination mastery
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-3">
-              {[
-                { label: 'UPSC CSE', sub: 'Civil Services' },
-                { label: 'RBI Grade B', sub: 'Banking' },
-                { label: 'GATE CS', sub: 'Computer Science' },
-                { label: 'CAT', sub: 'Analytics' },
-                { label: 'SSC CGL', sub: 'Central Govt.' },
-              ].map((exam) => (
-                <div key={exam.label} className="flex items-center gap-2 group" data-cursor-hover>
-                  <span className="w-1 h-1 rounded-full bg-[#7550C8] group-hover:scale-150 transition-transform" />
-                  <span className="text-xs sm:text-sm font-semibold text-[#16131F] dark:text-white/90 tracking-tight group-hover:text-[#7550C8] transition-colors">
-                    {exam.label}
-                  </span>
-                  <span className="text-[10px] text-[#A09BA8] dark:text-[#6C6880] font-light hidden sm:inline">
-                    {exam.sub}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+          {/* Top-Grade Continuous Sideways Sliding Marquee (Placed "Little Down") */}
+          <IndustryMarquee className="pt-14 sm:pt-20" />
 
         </div>
       </HeroSpotlight>

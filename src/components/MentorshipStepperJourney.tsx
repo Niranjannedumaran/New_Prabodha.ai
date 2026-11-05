@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Compass, Activity, GitBranch, Gauge, Zap, CheckCircle2, ArrowRight, Play, Pause, Sparkles, Clock, Target } from 'lucide-react';
+import { Compass, Activity, GitBranch, Gauge, Zap, CheckCircle2, ArrowRight, Target, Clock } from 'lucide-react';
 import { SpotlightCard } from './SpotlightCard';
 
 interface MentorshipStep {
@@ -137,77 +137,36 @@ const MENTORSHIP_STEPS: MentorshipStep[] = [
 
 export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => void }> = ({ onLaunchMentorship }) => {
   const [activeIdx, setActiveIdx] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [timerProgress, setTimerProgress] = useState(0);
 
   const activeStep = MENTORSHIP_STEPS[activeIdx];
-
-  // Auto-advance timer for ongoing pleasant animation
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      setTimerProgress((prev) => {
-        if (prev >= 100) {
-          setActiveIdx((curr) => (curr + 1) % MENTORSHIP_STEPS.length);
-          return 0;
-        }
-        return prev + 2; // ~5 seconds per step
-      });
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-
-  const handleSelectStep = (index: number) => {
-    setActiveIdx(index);
-    setTimerProgress(0);
-  };
 
   return (
     <div className="space-y-8">
       
-      {/* Top Controller Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-white dark:bg-[#13111F] border border-[#EAE7EF] dark:border-[#272439] shadow-soft-xs">
+      {/* Top Header Bar - Clean Architecture Status */}
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#13111F] border border-[#E2D9F3] dark:border-[#272439] shadow-soft-xs">
         <div className="flex items-center gap-2.5">
           <span className="w-2 h-2 rounded-full bg-[#7550C8] animate-pulse" />
-          <span className="text-xs font-mono font-bold text-[#19171F] dark:text-white uppercase tracking-wider">
+          <span className="text-xs font-mono font-bold text-[#16131F] dark:text-white uppercase tracking-wider">
             Autonomous 5-Stage Cognitive Guidance Architecture
           </span>
         </div>
 
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F5F4F7] dark:bg-[#1C182B] border border-[#EAE7EF] dark:border-[#2C2740] text-xs font-mono text-[#19171F] dark:text-[#E2DFEB] hover:border-[#7550C8] transition-colors"
-          >
-            {isAutoPlaying ? (
-              <>
-                <Pause className="w-3 h-3 text-[#7550C8]" />
-                <span>Auto-Cycling Active</span>
-              </>
-            ) : (
-              <>
-                <Play className="w-3 h-3 text-[#7550C8]" />
-                <span>Resume Auto-Cycle</span>
-              </>
-            )}
-          </button>
-          
-          <span className="text-xs font-mono text-[#77727F]">
-            Step {activeStep.num} of 5
+        <div className="flex items-center gap-2 text-xs font-mono text-[#77727F] dark:text-[#9A95A8]">
+          <span className="px-2.5 py-1 rounded-full bg-[#F5F1FD] dark:bg-[#1E192E] text-[#7550C8] dark:text-[#B99CFF] font-semibold">
+            Stage {activeStep.step} of 05 Active
           </span>
         </div>
       </div>
 
-      {/* Main Grid: Left interactive step list, Right visual diagnostic stage */}
+      {/* Main Grid: Left interactive milestone cards, Right visual diagnostic canvas */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        {/* Left Column: 5 Enhanced Steps with Living Beam and Spring Glow */}
+        {/* Left Column: 5 Clean Cards (Zero Timer, Zero Underline) */}
         <div className="lg:col-span-5 space-y-3 relative">
           
-          {/* Subtle connected vertical track */}
-          <div className="hidden sm:block absolute left-8 top-6 bottom-6 w-0.5 bg-gradient-to-b from-[#7550C8]/40 via-[#DDD2F7]/30 to-transparent -z-0" />
+          {/* Subtle connected vertical guide */}
+          <div className="hidden sm:block absolute left-8 top-6 bottom-6 w-0.5 bg-gradient-to-b from-[#7550C8]/30 via-[#DDD2F7]/25 to-transparent -z-0" />
 
           {MENTORSHIP_STEPS.map((item, idx) => {
             const isSelected = activeIdx === idx;
@@ -216,23 +175,13 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
             return (
               <SpotlightCard
                 key={item.step}
-                onClick={() => handleSelectStep(idx)}
+                onClick={() => setActiveIdx(idx)}
                 className={`p-4 sm:p-5 rounded-2xl cursor-pointer transition-all border relative z-10 ${
                   isSelected
-                    ? 'bg-white dark:bg-[#181528] border-[#7550C8] shadow-soft'
-                    : 'bg-[#FCFBFE] dark:bg-[#13111E] border-[#EAE7EF] dark:border-[#242234] hover:border-[#7550C8]/40'
+                    ? 'bg-white dark:bg-[#181528] border-[#7550C8] shadow-soft ring-1 ring-[#7550C8]/20'
+                    : 'bg-[#FAF8FE] dark:bg-[#13111E] border-[#E2D9F3] dark:border-[#242234] hover:border-[#7550C8]/40'
                 }`}
               >
-                {/* Active step ongoing progress bar */}
-                {isSelected && isAutoPlaying && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#EDE6FB] dark:bg-[#2A233D] overflow-hidden rounded-b-2xl">
-                    <motion.div
-                      className="h-full bg-[#7550C8]"
-                      style={{ width: `${timerProgress}%` }}
-                    />
-                  </div>
-                )}
-
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3.5">
                     {/* Step Icon Badge */}
@@ -255,18 +204,18 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                           • {item.tag}
                         </span>
                       </div>
-                      <div className={`text-xs sm:text-sm font-bold tracking-tight ${isSelected ? 'text-[#19171F] dark:text-white' : 'text-[#555060] dark:text-[#A7A3B4]'}`}>
+                      <div className={`text-xs sm:text-sm font-bold tracking-tight ${isSelected ? 'text-[#16131F] dark:text-white' : 'text-[#555060] dark:text-[#A7A3B4]'}`}>
                         {item.title}
                       </div>
                     </div>
                   </div>
 
-                  {/* Pulsing indicator when active */}
+                  {/* Clean active indicator dot */}
                   {isSelected && (
                     <motion.div
                       animate={{ scale: [1, 1.25, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
-                      className="w-2 h-2 rounded-full bg-[#7550C8] shrink-0"
+                      className="w-2.5 h-2.5 rounded-full bg-[#7550C8] shrink-0"
                     />
                   )}
                 </div>
@@ -277,7 +226,7 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
 
         {/* Right Column: Sliding Living Diagnostic Simulation Canvas */}
         <div className="lg:col-span-7">
-          <SpotlightCard className="p-6 sm:p-9 rounded-3xl bg-white dark:bg-[#141220] border border-[#EAE7EF] dark:border-[#272439] shadow-soft space-y-6">
+          <SpotlightCard className="p-6 sm:p-9 rounded-3xl bg-white dark:bg-[#141220] border border-[#E2D9F3] dark:border-[#272439] shadow-soft space-y-6">
             
             {/* Stage Header Banner */}
             <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-[#EAE7EF] dark:border-[#252236]">
@@ -285,7 +234,7 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF] font-bold block mb-1">
                   {activeStep.simulationData.badge}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#19171F] dark:text-white">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#16131F] dark:text-white">
                   {activeStep.title}
                 </h3>
               </div>
@@ -315,10 +264,10 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                 </p>
 
                 {/* Rich Code-Driven Visual Interactive Telemetry Widget */}
-                <div className="p-5 rounded-2xl bg-[#F8F7FB] dark:bg-[#191629] border border-[#EAE7EF] dark:border-[#2A263E] space-y-4">
+                <div className="p-5 rounded-2xl bg-[#F8F6FD] dark:bg-[#191629] border border-[#E2D9F3] dark:border-[#2A263E] space-y-4">
                   
                   <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="font-bold text-[#19171F] dark:text-white flex items-center gap-2">
+                    <span className="font-bold text-[#16131F] dark:text-white flex items-center gap-2">
                       <Target className="w-4 h-4 text-[#7550C8]" />
                       {activeStep.simulationData.headline}
                     </span>
@@ -327,7 +276,7 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                     </span>
                   </div>
 
-                  {/* Dynamic Simulation Graph based on Step */}
+                  {/* Dynamic Simulation Content */}
                   {activeStep.num === 1 && (
                     <div className="space-y-2.5 pt-1">
                       <div className="flex items-center justify-between text-xs">
@@ -335,12 +284,7 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                         <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">100% Calibrated</span>
                       </div>
                       <div className="h-2 rounded-full bg-[#EAE7EF] dark:bg-[#28233C] overflow-hidden">
-                        <motion.div
-                          className="h-full bg-emerald-500 rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: '100%' }}
-                          transition={{ duration: 0.8 }}
-                        />
+                        <div className="h-full bg-emerald-500 rounded-full w-full" />
                       </div>
 
                       <div className="flex items-center justify-between text-xs pt-2">
@@ -348,12 +292,7 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                         <span className="font-mono font-bold text-[#7550C8]">78% Projected</span>
                       </div>
                       <div className="h-2 rounded-full bg-[#EAE7EF] dark:bg-[#28233C] overflow-hidden">
-                        <motion.div
-                          className="h-full bg-[#7550C8] rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: '78%' }}
-                          transition={{ duration: 0.8, delay: 0.1 }}
-                        />
+                        <div className="h-full bg-[#7550C8] rounded-full w-[78%]" />
                       </div>
                     </div>
                   )}
@@ -387,21 +326,19 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                   )}
 
                   {activeStep.num === 3 && (
-                    <div className="p-3.5 rounded-xl bg-white dark:bg-[#201C31] border border-[#EAE7EF] dark:border-[#332B4C] flex items-center justify-between gap-3">
+                    <div className="p-3.5 rounded-xl bg-white dark:bg-[#201C31] border border-[#E2D9F3] dark:border-[#332B4C] flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-xs font-bold text-[#19171F] dark:text-white">
+                        <div className="text-xs font-bold text-[#16131F] dark:text-white">
                           Central Invariant Multiplier Node
                         </div>
                         <p className="text-[11px] text-[#77727F] dark:text-[#A7A3B4]">
                           1 Core Theorem &rarr; 28 Past Exam Paper Variations Solved
                         </p>
                       </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-1.5">
                         {[1, 2, 3, 4, 5].map((i) => (
-                          <motion.span
+                          <span
                             key={i}
-                            animate={{ scale: [1, 1.3, 1] }}
-                            transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.15 }}
                             className="w-2 h-2 rounded-full bg-[#7550C8]"
                           />
                         ))}
@@ -415,14 +352,12 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                         <span className="text-[#77727F]">Cognitive Strain Balance</span>
                         <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">Optimal Zone</span>
                       </div>
-                      {/* Ongoing smooth animated sinus wave */}
                       <div className="h-10 rounded-xl bg-white dark:bg-[#1E192D] border border-[#EAE7EF] dark:border-[#2F2746] flex items-center justify-around px-3">
                         {[20, 45, 75, 60, 35, 50, 70, 40, 25, 55, 65, 30].map((val, i) => (
-                          <motion.div
+                          <div
                             key={i}
                             className="w-1.5 bg-[#7550C8] rounded-full"
-                            animate={{ height: [`${val * 0.4}%`, `${val}%`, `${val * 0.3}%`] }}
-                            transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.08, ease: 'easeInOut' }}
+                            style={{ height: `${val}%` }}
                           />
                         ))}
                       </div>
@@ -434,7 +369,7 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                       <div className="flex items-center gap-3">
                         <Clock className="w-5 h-5 text-[#7550C8]" />
                         <div>
-                          <div className="text-xs font-bold text-[#19171F] dark:text-white">
+                          <div className="text-xs font-bold text-[#16131F] dark:text-white">
                             25-Minute Single-Concept Sprint
                           </div>
                           <div className="text-[11px] text-[#77727F] dark:text-[#A7A3B4]">
@@ -453,13 +388,13 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                   </p>
                 </div>
 
-                {/* 3 Key Operational Principles for this step */}
+                {/* 3 Key Operational Principles */}
                 <div className="space-y-2.5">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-[#77727F] dark:text-[#8E8A9B] font-bold block">
                     Automated Diagnostic Protocols:
                   </span>
                   {activeStep.diagnosticItems.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs text-[#19171F] dark:text-[#E2DFEB]">
+                    <div key={idx} className="flex items-start gap-2.5 text-xs text-[#16131F] dark:text-[#E2DFEB]">
                       <CheckCircle2 className="w-4 h-4 text-[#7550C8] shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </div>
@@ -475,7 +410,7 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                   {onLaunchMentorship && (
                     <button
                       onClick={onLaunchMentorship}
-                      className="px-4 py-2 rounded-full bg-[#19171F] dark:bg-white text-white dark:text-[#19171F] hover:bg-[#7550C8] dark:hover:bg-[#EDE6FB] text-xs font-semibold flex items-center gap-1.5 self-start sm:self-auto transition-colors"
+                      className="px-4 py-2 rounded-full bg-[#16131F] dark:bg-white text-white dark:text-[#16131F] hover:bg-[#7550C8] dark:hover:bg-[#EDE6FB] text-xs font-semibold flex items-center gap-1.5 self-start sm:self-auto transition-colors"
                     >
                       <span>Explore Mentorship Architecture</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -494,4 +429,3 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
     </div>
   );
 };
-
