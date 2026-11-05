@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Compass, Activity, GitBranch, Gauge, Zap, CheckCircle2, ArrowRight, Target, Clock } from 'lucide-react';
+import { Compass, Activity, GitBranch, Gauge, Zap, CheckCircle2, ArrowRight, Target, Clock, ChevronRight } from 'lucide-react';
 import { SpotlightCard } from './SpotlightCard';
 
 interface MentorshipStep {
@@ -210,13 +210,9 @@ export const MentorshipStepperJourney: React.FC<{ onLaunchMentorship?: () => voi
                     </div>
                   </div>
 
-                  {/* Clean active indicator dot */}
+                  {/* Clean active indicator chevron */}
                   {isSelected && (
-                    <motion.div
-                      animate={{ scale: [1, 1.25, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="w-2.5 h-2.5 rounded-full bg-[#7550C8] shrink-0"
-                    />
+                    <ChevronRight className="w-4 h-4 text-[#7550C8] dark:text-[#B99CFF] shrink-0" />
                   )}
                 </div>
               </SpotlightCard>

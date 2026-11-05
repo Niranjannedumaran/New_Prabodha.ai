@@ -24,12 +24,12 @@ Once running, open your browser to:
 
 ---
 
-## 🚀 1-Line Copy & Paste (Push to GitHub)
+## 🚀 1-Line Copy & Paste (Commit & Push to GitHub)
 
-To push this entire project with all 234 files, assets, and history to your GitHub repository ([Niranjannedumaran/New_Prabodha.ai](https://github.com/Niranjannedumaran/New_Prabodha.ai)), run:
+To commit and push all the latest Apple-grade SVG motion graphics, responsive mobile enhancements, and investor experiences to your GitHub repository ([Niranjannedumaran/New_Prabodha.ai](https://github.com/Niranjannedumaran/New_Prabodha.ai)), run:
 
 ```cmd
-git push -u origin main
+git add . && git commit -m "feat: complete SVG motion graphics system & dual-audience experience" && git push origin main
 ```
 
 ---

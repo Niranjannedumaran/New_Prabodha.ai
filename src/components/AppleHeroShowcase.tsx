@@ -127,25 +127,36 @@ export const AppleHeroShowcase: React.FC<AppleHeroShowcaseProps> = ({
             </div>
 
             {/* Right Mascot Spotlight (5 Cols desktop, centered uncropped on mobile) */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center relative pt-2 lg:pt-0">
+            <div className="lg:col-span-5 flex flex-col items-center justify-center relative pt-4 lg:pt-0">
               
               {/* Pedestal Radiant Ring */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#7550C8]/25 via-[#B99CFF]/15 to-transparent rounded-full blur-2xl -z-0" />
 
-              {/* The Mascot Duo Container - Perfectly Centered, Zero Clipping */}
-              <div className="relative w-56 sm:w-72 lg:w-96 max-w-full flex items-center justify-center mx-auto">
-                <img
-                  src="/new-assets/Cheerful Student and Robot Mascot.png"
-                  alt="Official Prabodha Student Scholar and Socratic Robot Companion"
-                  className="w-full h-auto object-contain filter drop-shadow-xl select-none animate-float-slow"
-                  loading="eager"
-                />
+              {/* The Mascot Duo Container with Architecturally Grounded Pedestal Base */}
+              <div className="relative w-56 sm:w-72 lg:w-96 max-w-full flex flex-col items-center justify-center mx-auto">
+                <div 
+                  className="relative w-full flex items-center justify-center overflow-hidden"
+                  style={{
+                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%)',
+                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%)',
+                  }}
+                >
+                  <img
+                    src="/new-assets/Cheerful Student and Robot Mascot.png"
+                    alt="Official Prabodha Student Scholar and Socratic Robot Companion"
+                    className="w-full h-auto object-contain filter drop-shadow-2xl select-none animate-float-slow pb-4"
+                    loading="eager"
+                  />
+                </div>
 
-                {/* Floating Apple-Style Pill Badge */}
+                {/* Grounding Frosted Glass Pedestal Dock */}
+                <div className="w-48 sm:w-60 h-2 -mt-2 bg-gradient-to-r from-transparent via-[#7550C8]/30 to-transparent rounded-full blur-xs" />
+
+                {/* Floating Apple-Style Invariant Pill Badge */}
                 <motion.div
-                  animate={{ y: [0, -6, 0] }}
+                  animate={{ y: [0, -5, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -bottom-3 bg-white/95 dark:bg-[#1C182E]/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#DDD2F7] dark:border-[#3A2D58] shadow-[0_4px_20px_rgba(117,80,200,0.15)] flex items-center gap-2"
+                  className="mt-2 bg-white/95 dark:bg-[#1C182E]/95 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#DDD2F7] dark:border-[#3A2D58] shadow-[0_4px_20px_rgba(117,80,200,0.15)] flex items-center gap-2 relative z-10"
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#110E1B] dark:text-white">

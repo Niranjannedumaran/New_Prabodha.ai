@@ -37,6 +37,12 @@ import { AppleHeroShowcase } from '../components/AppleHeroShowcase';
 import { IndustryMarquee } from '../components/IndustryMarquee';
 import { SocraticReasoningSandbox } from '../components/SocraticReasoningSandbox';
 import { MentorshipStepperJourney } from '../components/MentorshipStepperJourney';
+import { HeroIntelligenceUniverse } from '../components/svg-motion/HeroIntelligenceUniverse';
+import { PrabodhaClarityPath } from '../components/svg-motion/PrabodhaClarityPath';
+import { SocraticReasoningGraphic } from '../components/svg-motion/SocraticReasoningGraphic';
+import { ExamTopologyGraphic } from '../components/svg-motion/ExamTopologyGraphic';
+import { CareerTrajectoryGraphic } from '../components/svg-motion/CareerTrajectoryGraphic';
+import { MentorshipDialogueGraphic } from '../components/svg-motion/MentorshipDialogueGraphic';
 import { NavigationPage } from '../types';
 import {
   PRODUCT_PILLARS,
@@ -62,6 +68,160 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
 
   // Exam Matrix Interactive State (Replaces static image)
   const [activeExamTab, setActiveExamTab] = useState<'upsc-cse' | 'rbi-grade-b' | 'gate-cs' | 'cat-mgmt'>('upsc-cse');
+
+  // Interactive Live Examination Topology Matrix for Section 6
+  const TOPOLOGY_MATRIX = {
+    'upsc-cse': {
+      examName: 'UPSC Civil Services (IAS, IPS & IFS)',
+      paperTrack: 'GS Papers 1, 2, 3 & 4 + CSAT Foundation',
+      metrics: '15 Years Past Papers Vectorized • 94.2% Invariant Convergence',
+      nodes: [
+        {
+          nodeNum: '01',
+          tag: 'GS Paper 2 • Constitutional Law',
+          title: 'Constitutional Basic Structure Axiom',
+          theorem: 'Kesavananda Bharati Invariant',
+          desc: 'Constituent amending power under Art 368 vs bedrock constitutional identity. Unlocks 28 historical analytical question variants.',
+          yieldVal: '94% Past Paper Yield',
+          difficulty: 'Bedrock Invariant',
+          latency: '~35s First-Principles Derivation',
+        },
+        {
+          nodeNum: '02',
+          tag: 'GS Paper 3 • Macroeconomics',
+          title: 'Macro-Fiscal Policy Multipliers',
+          theorem: 'IS-LM & Credit Transmission Dynamics',
+          desc: 'Causal transmission from policy repo rate adjustments to capex multipliers, public debt sustainability, and structural inflation.',
+          yieldVal: '88% Past Paper Yield',
+          difficulty: 'Causal Multi-Variable',
+          latency: '~42s First-Principles Derivation',
+        },
+        {
+          nodeNum: '03',
+          tag: 'GS Paper 4 • Ethics & Governance',
+          title: 'Administrative Ethics & Deontology',
+          theorem: 'Public Interest Fiduciary Invariant',
+          desc: 'Multi-stakeholder ethical dilemma resolution without procedural shortcuts. Balancing administrative rigidity with public welfare.',
+          yieldVal: '91% Past Paper Yield',
+          difficulty: 'Socratic Evaluation',
+          latency: '~50s First-Principles Derivation',
+        },
+      ],
+    },
+    'rbi-grade-b': {
+      examName: 'RBI Grade B (Phase 2 Specialization)',
+      paperTrack: 'Economic & Social Issues + Finance & Management',
+      metrics: '12 Years Regulatory Examination Papers • 96.4% Quantitative Yield',
+      nodes: [
+        {
+          nodeNum: '01',
+          tag: 'Finance • Sovereign Debt Markets',
+          title: 'Yield Curve Dynamics & Term Premia',
+          theorem: 'Expectations Hypothesis vs Liquidity Risk',
+          desc: 'Explaining why 10-year sovereign yields decline during tightening cycles through forward rate anticipation and duration risk hedging.',
+          yieldVal: '96% Past Paper Yield',
+          difficulty: 'Quantitative Macro',
+          latency: '~38s First-Principles Derivation',
+        },
+        {
+          nodeNum: '02',
+          tag: 'Banking • Prudential Regulation',
+          title: 'Basel III Capital Adequacy & CRR/SLR',
+          theorem: 'Counter-Cyclical Buffer Axiom',
+          desc: 'Risk-Weighted Assets (RWA), Tier 1 capital ratios, and systemic liquidity buffers under macroeconomic credit shock scenarios.',
+          yieldVal: '92% Past Paper Yield',
+          difficulty: 'Prudential Systems',
+          latency: '~40s First-Principles Derivation',
+        },
+        {
+          nodeNum: '03',
+          tag: 'Management • Organizational Theory',
+          title: 'Corporate Governance & Agency Conflicts',
+          theorem: 'Fiduciary Stewardship Invariant',
+          desc: 'Resolving principal-agent friction, asymmetric information in corporate credit underwriting, and independent board oversight ethics.',
+          yieldVal: '89% Past Paper Yield',
+          difficulty: 'Organizational Invariant',
+          latency: '~44s First-Principles Derivation',
+        },
+      ],
+    },
+    'gate-cs': {
+      examName: 'GATE Computer Science & Information Technology',
+      paperTrack: 'Theory of Computation, Algorithms & Operating Systems',
+      metrics: '20 Years GATE Papers Vectorized • 98.1% Formal Proof Precision',
+      nodes: [
+        {
+          nodeNum: '01',
+          tag: 'Theory of Computation • Automata',
+          title: 'Turing Decidability & Diagonalization',
+          theorem: 'Halting Problem Non-Decidability Limit',
+          desc: 'Self-referential adversarial logic proving fundamental boundaries of computation. Solves undecidability reduction questions directly.',
+          yieldVal: '98% Past Paper Yield',
+          difficulty: 'Formal Automata Proof',
+          latency: '~30s First-Principles Derivation',
+        },
+        {
+          nodeNum: '02',
+          tag: 'Algorithms • Complexity Theory',
+          title: 'Asymptotic Recurrence & Master Invariant',
+          theorem: 'Divide-and-Conquer Complexity Bounds',
+          desc: 'Bounding continuous recurrence trees without rote memorization of edge cases by tracking subproblem leaf-level work.',
+          yieldVal: '95% Past Paper Yield',
+          difficulty: 'Asymptotic Rigor',
+          latency: '~28s First-Principles Derivation',
+        },
+        {
+          nodeNum: '03',
+          tag: 'Operating Systems • Concurrency',
+          title: 'Deadlock Invariants & Dining Philosophers',
+          theorem: 'Coffman 4-Condition Simultaneous Truth',
+          desc: 'Proving circular wait elimination and mutual exclusion invariants across distributed locks without race conditions or starvation.',
+          yieldVal: '93% Past Paper Yield',
+          difficulty: 'Concurrent State Systems',
+          latency: '~36s First-Principles Derivation',
+        },
+      ],
+    },
+    'cat-mgmt': {
+      examName: 'CAT Analytics & Quantitative Aptitude',
+      paperTrack: 'Quantitative Aptitude (QA) & Data Interpretation (DILR)',
+      metrics: '14 Years IIM Examination Papers • 97.2% Analytical Speed Leverage',
+      nodes: [
+        {
+          nodeNum: '01',
+          tag: 'Quantitative Aptitude • Modern Math',
+          title: 'Combinatorial Symmetry & Permutations',
+          theorem: 'Positional Division Symmetry Invariant',
+          desc: 'Dividing arrangements by positional symmetries eliminates 90% of counting errors without memorizing brittle surface formulas.',
+          yieldVal: '97% Past Paper Yield',
+          difficulty: 'Analytical Symmetry',
+          latency: '~25s First-Principles Derivation',
+        },
+        {
+          nodeNum: '02',
+          tag: 'Decision Sciences • Probability',
+          title: 'Bayesian Conditional Probability Chains',
+          theorem: 'Inverse Probability Theorem',
+          desc: 'Updating prior probabilities into posterior certainty under sequential diagnostic tests and imperfect information matrices.',
+          yieldVal: '94% Past Paper Yield',
+          difficulty: 'Bayesian Inference',
+          latency: '~32s First-Principles Derivation',
+        },
+        {
+          nodeNum: '03',
+          tag: 'DILR • Logical Games',
+          title: 'Matrix Optimization & Network Flow',
+          theorem: 'Constraint Satisfaction Axiom',
+          desc: 'Deducing binary seating grids and tournament elimination brackets by identifying unshared unique attributes under strict constraints.',
+          yieldVal: '92% Past Paper Yield',
+          difficulty: 'Constraint Deduction',
+          latency: '~35s First-Principles Derivation',
+        },
+      ],
+    },
+  };
+
+  const currentExamTopology = TOPOLOGY_MATRIX[activeExamTab] || TOPOLOGY_MATRIX['upsc-cse'];
 
   // Career Trajectory Interactive State (Replaces static image)
   const [activeCareerIndex, setActiveCareerIndex] = useState(0);
@@ -143,6 +303,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
   ];
 
   const currentMentorship = mentorshipDetails[activeMentorshipIndex] || mentorshipDetails[0];
+  const [activePillarVisual, setActivePillarVisual] = useState<'exams' | 'learning' | 'careers' | 'mentorship'>('exams');
 
   return (
     <div className="pt-24 pb-20 bg-[#F5F2FA] dark:bg-[#0B0A0F] text-[#16131F] dark:text-[#F3F2F8] selection:bg-[#EDE6FB] selection:text-[#51349A] transition-colors duration-300">
@@ -218,6 +379,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
             </MagneticButton>
           </motion.div>
 
+          {/* Hero Intelligence Universe — Advanced SVG Motion Graphics */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="pt-4 pb-2"
+          >
+            <HeroIntelligenceUniverse />
+          </motion.div>
+
           {/* Apple-Style Curvy Bento Cards Showcase (Desktop & Mobile Optimized) */}
           <AppleHeroShowcase
             onExplore={() => handleNav('exams')}
@@ -233,69 +404,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
       <IndustryMarquee className="max-w-7xl mx-auto my-2 sm:my-6 px-3 sm:px-6" />
 
       {/* ========================================================= */}
-      {/* SECTION 3: BRAND PHILOSOPHY — CLARITY PATH RIBBON         */}
+      {/* SECTION 3: BRAND PHILOSOPHY — CLARITY PATH SVG PIPELINE    */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-24 bg-white/70 dark:bg-[#100F17] border-y border-[#E4DCF0] dark:border-[#222030] backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="max-w-3xl mb-14 space-y-4">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF] font-bold">
-              Brand Philosophy
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#110E1B] dark:text-white leading-[1.08]">
-              Understanding changes <br />
-              <span className="font-editorial italic font-normal text-[#7550C8] dark:text-[#B99CFF]">
-                everything.
-              </span>
-            </h2>
-            <p className="text-sm sm:text-base text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
-              Learning is more than collecting answers. It is the process of questioning, connecting ideas, practising and discovering how knowledge works.
-            </p>
-          </div>
-
-          {/* THE PRABODHA CLARITY PATH: Apple Squircle Card */}
-          <SpotlightCard className="bg-white/95 dark:bg-[#14121E] border border-[#E3DAF2] dark:border-[#272535] p-6 sm:p-10 space-y-8 rounded-[32px] sm:rounded-[36px] shadow-[0_8px_30px_rgba(117,80,200,0.06)]">
-            <div className="flex flex-wrap items-center justify-between text-xs font-mono text-[#383347] dark:text-[#9490A0] border-b border-[#EAE7EF] dark:border-[#242232] pb-4 gap-2">
-              <span className="font-bold text-[#7550C8] dark:text-[#B99CFF] uppercase tracking-wider flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#7550C8] animate-ping" />
-                The Prabodha Clarity Path
-              </span>
-              <span>Curiosity ➔ Understanding ➔ Practice ➔ Preparation ➔ Growth</span>
-            </div>
-
-            {/* Signature Ribbon Art */}
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-r from-[#F7F3FD] via-white to-[#F7F3FD] dark:from-[#1A1728] dark:via-[#14121E] dark:to-[#1A1728] p-4 flex items-center justify-center">
-              <img
-                src="/new-assets/Curiosity to Growth Learning Path.png"
-                alt="The Prabodha Clarity Path Ribbon Architecture"
-                className="w-full max-h-[260px] object-contain hover:scale-[1.02] transition-transform duration-500"
-              />
-            </div>
-
-            {/* Step-by-Step Intellectual Progression with Apple-Grade Curvy Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-              {[
-                { stage: 'Stage 01', title: 'Curiosity', desc: 'Framing genuine causal inquiries instead of memorizing surface statements.' },
-                { stage: 'Stage 02', title: 'Understanding', desc: 'Deconstructing problems down to bedrock premises and physical invariants.' },
-                { stage: 'Stage 03', title: 'Application', desc: 'Testing models under altered boundary conditions to solidify neural pathways.' },
-                { stage: 'Stage 04', title: 'Growth & Agency', desc: 'Translating verified intellectual competence into long-term career capability.' },
-              ].map((step, idx) => (
-                <SpotlightCard
-                  key={idx}
-                  className="p-5 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#171524] border border-[#E3DAF2] dark:border-[#29263A] space-y-2 hover:border-[#7550C8]/40 transition-colors"
-                >
-                  <span className="text-[10px] font-mono text-[#7550C8] dark:text-[#B99CFF] font-bold uppercase">{step.stage}</span>
-                  <h4 className="text-sm font-bold text-[#110E1B] dark:text-white">{step.title}</h4>
-                  <p className="text-xs text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
-                    {step.desc}
-                  </p>
-                </SpotlightCard>
-              ))}
-            </div>
-          </SpotlightCard>
-
-        </div>
-      </section>
+      <PrabodhaClarityPath />
 
       {/* ========================================================= */}
       {/* SECTION 4: CONNECTED PLATFORM (THE FOUR PILLARS)          */}
@@ -357,6 +468,90 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                 </div>
               </SpotlightCard>
             ))}
+          </div>
+
+          {/* Interactive Motion Architecture of the 4 Pillars */}
+          <div className="mt-12 sm:mt-16 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-white/80 dark:bg-[#141220]/80 border border-[#E2D9F3] dark:border-[#282238] backdrop-blur-md">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF] font-bold block mb-1">
+                  Live Motion Vector Architecture
+                </span>
+                <h4 className="text-base font-bold text-[#110E1B] dark:text-white">
+                  Inspect the Socratic & Cognitive Engines in Real Time
+                </h4>
+              </div>
+
+              {/* Selector Tabs */}
+              <div className="flex items-center gap-1.5 p-1 rounded-full bg-[#F5F2FA] dark:bg-[#1C182E] border border-[#E2D9F3] dark:border-[#2D2644] overflow-x-auto">
+                {[
+                  { id: 'exams', label: '01 Exam Topology' },
+                  { id: 'learning', label: '02 Socratic Reasoning' },
+                  { id: 'careers', label: '03 Career Lattice' },
+                  { id: 'mentorship', label: '04 Pacing Wave' },
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActivePillarVisual(tab.id as any)}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-bold transition-all whitespace-nowrap ${
+                      activePillarVisual === tab.id
+                        ? 'bg-[#7550C8] text-white shadow-soft-xs'
+                        : 'text-[#555060] dark:text-[#9A95A8] hover:text-[#110E1B] dark:hover:text-white'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Render Selected Dynamic SVG Motion Graphic */}
+            <AnimatePresence mode="wait">
+              {activePillarVisual === 'exams' && (
+                <motion.div
+                  key="exams-graphic"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ExamTopologyGraphic />
+                </motion.div>
+              )}
+              {activePillarVisual === 'learning' && (
+                <motion.div
+                  key="learning-graphic"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <SocraticReasoningGraphic />
+                </motion.div>
+              )}
+              {activePillarVisual === 'careers' && (
+                <motion.div
+                  key="careers-graphic"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <CareerTrajectoryGraphic />
+                </motion.div>
+              )}
+              {activePillarVisual === 'mentorship' && (
+                <motion.div
+                  key="mentorship-graphic"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <MentorshipDialogueGraphic />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
         </div>
@@ -447,51 +642,79 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                 })}
               </div>
 
-              <span className="text-xs font-mono text-[#7550C8] dark:text-[#B99CFF] font-semibold">
-                Live Syllabus Topology Active
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-mono font-bold text-[#7550C8] dark:text-[#B99CFF]">
+                  {currentExamTopology.metrics}
+                </span>
+              </div>
+            </div>
+
+            {/* Active Track Title & Scope Banner */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-4 rounded-2xl bg-[#FAF8FE] dark:bg-[#191629] border border-[#E3DAF2] dark:border-[#2D2543]">
+              <div>
+                <span className="text-[10px] font-mono uppercase text-[#7550C8] dark:text-[#B99CFF] font-bold block">
+                  Active Examination Scope
+                </span>
+                <h3 className="text-base sm:text-lg font-bold text-[#110E1B] dark:text-white">
+                  {currentExamTopology.examName}
+                </h3>
+              </div>
+              <span className="text-xs font-mono text-[#585366] dark:text-[#A7A3B4] font-semibold">
+                {currentExamTopology.paperTrack}
               </span>
             </div>
 
-            {/* Interactive Exam Topology Breakdown */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-              
-              <div className="p-6 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#181625] border border-[#E3DAF2] dark:border-[#29263A] space-y-3">
-                <span className="text-[10px] font-mono uppercase text-[#7550C8] dark:text-[#B99CFF] font-bold">Topology Node 01</span>
-                <h4 className="text-sm font-bold text-[#110E1B] dark:text-white">Constitutional Basic Structure</h4>
-                <p className="text-xs text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
-                  Axiomatic anchors linking Part III rights with judicial review and separation of powers.
-                </p>
-                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#585366] dark:text-[#A7A3B4]">
-                  <span>Historical Yield: High</span>
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">Verified Invariant</span>
-                </div>
-              </div>
+            {/* Interactive Exam Topology Breakdown: Truly Dynamic Cards */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeExamTab}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6"
+              >
+                {currentExamTopology.nodes.map((node, i) => (
+                  <div
+                    key={i}
+                    className="p-6 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#181625] border border-[#E3DAF2] dark:border-[#29263A] space-y-3.5 flex flex-col justify-between hover:border-[#7550C8]/60 transition-colors shadow-xs"
+                  >
+                    <div className="space-y-2.5">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono uppercase text-[#7550C8] dark:text-[#B99CFF] font-bold">
+                          Topology Node {node.nodeNum}
+                        </span>
+                        <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800/40">
+                          {node.yieldVal}
+                        </span>
+                      </div>
 
-              <div className="p-6 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#181625] border border-[#E3DAF2] dark:border-[#29263A] space-y-3">
-                <span className="text-[10px] font-mono uppercase text-[#7550C8] dark:text-[#B99CFF] font-bold">Topology Node 02</span>
-                <h4 className="text-sm font-bold text-[#110E1B] dark:text-white">Macro-Fiscal Policy Multipliers</h4>
-                <p className="text-xs text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
-                  Causal linkages between interest rate transmission, public capital capex, and inflation dynamics.
-                </p>
-                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#585366] dark:text-[#A7A3B4]">
-                  <span>Difficulty: High Order</span>
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">Verified Invariant</span>
-                </div>
-              </div>
+                      <span className="text-[11px] font-mono text-[#585366] dark:text-[#9A95A8] block">
+                        {node.tag}
+                      </span>
 
-              <div className="p-6 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#181625] border border-[#E3DAF2] dark:border-[#29263A] space-y-3">
-                <span className="text-[10px] font-mono uppercase text-[#7550C8] dark:text-[#B99CFF] font-bold">Topology Node 03</span>
-                <h4 className="text-sm font-bold text-[#110E1B] dark:text-white">Administrative Ethics & Case Studies</h4>
-                <p className="text-xs text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
-                  Multi-stakeholder ethical dilemma frameworks designed for GS Paper 4 decision models.
-                </p>
-                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#585366] dark:text-[#A7A3B4]">
-                  <span>Evaluation: Socratic</span>
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">Verified Invariant</span>
-                </div>
-              </div>
+                      <h4 className="text-base font-bold text-[#110E1B] dark:text-white tracking-tight">
+                        {node.title}
+                      </h4>
 
-            </div>
+                      <div className="text-xs font-editorial italic text-[#7550C8] dark:text-[#D5C2FF] font-medium">
+                        &ldquo;{node.theorem}&rdquo;
+                      </div>
+
+                      <p className="text-xs text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
+                        {node.desc}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-[#EAE7EF] dark:border-[#272438] flex items-center justify-between text-[11px] font-mono text-[#585366] dark:text-[#A7A3B4]">
+                      <span>{node.difficulty}</span>
+                      <span className="text-[#7550C8] dark:text-[#B99CFF] font-semibold">{node.latency}</span>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
 
             {/* Action Bar */}
             <div className="pt-4 border-t border-[#EAE7EF] dark:border-[#242232] flex flex-wrap items-center justify-between gap-4">
@@ -705,9 +928,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
 
                   <button
                     onClick={onOpenContact}
-                    className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white dark:bg-[#1A1629] text-[#110E1B] dark:text-[#F3F2F8] text-xs sm:text-sm font-medium border border-[#E3DAF2] dark:border-[#322A4A] hover:border-[#7550C8] transition-all shadow-soft-xs flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white dark:bg-[#1A1629] text-[#110E1B] dark:text-[#F3F2F8] text-xs sm:text-sm font-semibold border border-[#E3DAF2] dark:border-[#322A4A] hover:border-[#7550C8] transition-all shadow-soft-xs flex items-center justify-center gap-2"
                   >
-                    <span>Contact & Inquiries</span>
+                    <Sparkles className="w-4 h-4 text-[#7550C8]" />
+                    <span>Investor & Academic Inquiries</span>
                   </button>
                 </div>
 
@@ -723,32 +947,43 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                   </span>
                   <span className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                    <span>Autonomous Calibration</span>
+                    <span>Institutional Alignment</span>
                   </span>
                 </div>
               </div>
 
-              {/* Right Column: Hero Mascot Showcase prominently centered */}
+              {/* Right Column: Hero Mascot Showcase with Grounded Pedestal Dock */}
               <div className="lg:col-span-5 flex flex-col items-center justify-center relative pt-4 lg:pt-0">
                 {/* Radiant backdrop blur ring */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#7550C8]/20 via-[#B99CFF]/15 to-transparent rounded-full blur-2xl -z-0" />
 
-                <div className="relative w-52 sm:w-72 lg:w-80 max-w-full mx-auto">
-                  <img
-                    src="/new-assets/Triumphant Student and Robot Mascot.png"
-                    alt="Prabodha Triumphant Student and Socratic Robot Mascot"
-                    className="w-full h-auto object-contain animate-float-slow filter drop-shadow-xl select-none"
-                    loading="lazy"
-                  />
+                <div className="relative w-52 sm:w-72 lg:w-80 max-w-full mx-auto flex flex-col items-center justify-center">
+                  <div 
+                    className="relative w-full flex items-center justify-center overflow-hidden"
+                    style={{
+                      WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
+                      maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
+                    }}
+                  >
+                    <img
+                      src="/new-assets/Triumphant Student and Robot Mascot.png"
+                      alt="Prabodha Triumphant Student and Socratic Robot Mascot"
+                      className="w-full h-auto object-contain animate-float-slow filter drop-shadow-2xl select-none pb-3"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Grounding Base Dock */}
+                  <div className="w-44 sm:w-56 h-2 -mt-1 bg-gradient-to-r from-transparent via-[#7550C8]/30 to-transparent rounded-full blur-xs" />
 
                   {/* Floating Achievement Capsule */}
                   <motion.div
                     animate={{ y: [0, -5, 0] }}
                     transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute -bottom-2 -left-2 sm:left-0 bg-white/95 dark:bg-[#1C182B]/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#DDD2F7] dark:border-[#3A2E59] shadow-soft flex items-center gap-2"
+                    className="mt-2 bg-white/95 dark:bg-[#1C182B]/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#DDD2F7] dark:border-[#3A2E59] shadow-soft flex items-center gap-2 relative z-10"
                   >
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] font-mono font-bold text-[#110E1B] dark:text-white">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#110E1B] dark:text-white">
                       Invariant Mastered • 100% Retained
                     </span>
                   </motion.div>
