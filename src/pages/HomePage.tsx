@@ -34,6 +34,7 @@ import { SpotlightCard } from '../components/SpotlightCard';
 import { HeroSpotlight } from '../components/HeroSpotlight';
 import { MagneticButton } from '../components/MagneticButton';
 import { AppleHeroShowcase } from '../components/AppleHeroShowcase';
+import { IndustryMarquee } from '../components/IndustryMarquee';
 import { SocraticReasoningSandbox } from '../components/SocraticReasoningSandbox';
 import { MentorshipStepperJourney } from '../components/MentorshipStepperJourney';
 import { NavigationPage } from '../types';
@@ -227,29 +228,34 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
       </HeroSpotlight>
 
       {/* ========================================================= */}
+      {/* SIDEWAYS MOVING CONTINUOUS CURRICULUM MARQUEE              */}
+      {/* ========================================================= */}
+      <IndustryMarquee className="max-w-7xl mx-auto my-2 sm:my-6 px-3 sm:px-6" />
+
+      {/* ========================================================= */}
       {/* SECTION 3: BRAND PHILOSOPHY — CLARITY PATH RIBBON         */}
       {/* ========================================================= */}
-      <section className="py-20 bg-white dark:bg-[#100F17] border-y border-[#EAE7EF] dark:border-[#222030]">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+      <section className="py-20 sm:py-24 bg-white/70 dark:bg-[#100F17] border-y border-[#E4DCF0] dark:border-[#222030] backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-14 space-y-4">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF]">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF] font-bold">
               Brand Philosophy
             </span>
-            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#19171F] dark:text-white leading-[1.08]">
+            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#110E1B] dark:text-white leading-[1.08]">
               Understanding changes <br />
               <span className="font-editorial italic font-normal text-[#7550C8] dark:text-[#B99CFF]">
                 everything.
               </span>
             </h2>
-            <p className="text-base text-[#77727F] dark:text-[#9490A0] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
               Learning is more than collecting answers. It is the process of questioning, connecting ideas, practising and discovering how knowledge works.
             </p>
           </div>
 
-          {/* THE PRABODHA CLARITY PATH: Interactive Progress System */}
-          <SpotlightCard className="bg-[#FCFBFE] dark:bg-[#14121E] border border-[#EAE7EF] dark:border-[#272535] p-6 sm:p-10 space-y-8 shadow-soft-sm">
-            <div className="flex flex-wrap items-center justify-between text-xs font-mono text-[#77727F] dark:text-[#9490A0] border-b border-[#EAE7EF] dark:border-[#242232] pb-4 gap-2">
+          {/* THE PRABODHA CLARITY PATH: Apple Squircle Card */}
+          <SpotlightCard className="bg-white/95 dark:bg-[#14121E] border border-[#E3DAF2] dark:border-[#272535] p-6 sm:p-10 space-y-8 rounded-[32px] sm:rounded-[36px] shadow-[0_8px_30px_rgba(117,80,200,0.06)]">
+            <div className="flex flex-wrap items-center justify-between text-xs font-mono text-[#383347] dark:text-[#9490A0] border-b border-[#EAE7EF] dark:border-[#242232] pb-4 gap-2">
               <span className="font-bold text-[#7550C8] dark:text-[#B99CFF] uppercase tracking-wider flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#7550C8] animate-ping" />
                 The Prabodha Clarity Path
@@ -258,7 +264,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
             </div>
 
             {/* Signature Ribbon Art */}
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-[#F7F3FD] via-white to-[#F7F3FD] dark:from-[#1A1728] dark:via-[#14121E] dark:to-[#1A1728] p-4 flex items-center justify-center">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-gradient-to-r from-[#F7F3FD] via-white to-[#F7F3FD] dark:from-[#1A1728] dark:via-[#14121E] dark:to-[#1A1728] p-4 flex items-center justify-center">
               <img
                 src="/new-assets/Curiosity to Growth Learning Path.png"
                 alt="The Prabodha Clarity Path Ribbon Architecture"
@@ -266,7 +272,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
               />
             </div>
 
-            {/* Step-by-Step Intellectual Progression with Cursor Spotlight on Each Card */}
+            {/* Step-by-Step Intellectual Progression with Apple-Grade Curvy Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
               {[
                 { stage: 'Stage 01', title: 'Curiosity', desc: 'Framing genuine causal inquiries instead of memorizing surface statements.' },
@@ -276,11 +282,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
               ].map((step, idx) => (
                 <SpotlightCard
                   key={idx}
-                  className="p-5 rounded-2xl bg-white dark:bg-[#171524] border border-[#EAE7EF] dark:border-[#29263A] space-y-2 hover:border-[#7550C8]/40 transition-colors"
+                  className="p-5 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#171524] border border-[#E3DAF2] dark:border-[#29263A] space-y-2 hover:border-[#7550C8]/40 transition-colors"
                 >
                   <span className="text-[10px] font-mono text-[#7550C8] dark:text-[#B99CFF] font-bold uppercase">{step.stage}</span>
-                  <h4 className="text-sm font-bold text-[#19171F] dark:text-white">{step.title}</h4>
-                  <p className="text-xs text-[#77727F] dark:text-[#9490A0] font-light leading-relaxed">
+                  <h4 className="text-sm font-bold text-[#110E1B] dark:text-white">{step.title}</h4>
+                  <p className="text-xs text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
                     {step.desc}
                   </p>
                 </SpotlightCard>
@@ -294,30 +300,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
       {/* ========================================================= */}
       {/* SECTION 4: CONNECTED PLATFORM (THE FOUR PILLARS)          */}
       {/* ========================================================= */}
-      <section className="py-24 bg-[#FCFBFE] dark:bg-[#0B0A0F]">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+      <section className="py-20 sm:py-24 bg-[#F5F2FA] dark:bg-[#0B0A0F]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-14 space-y-4">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF]">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF] font-bold">
               Unified Intelligence Architecture
             </span>
-            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#19171F] dark:text-white leading-[1.08]">
+            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#110E1B] dark:text-white leading-[1.08]">
               One platform. <br />
               <span className="font-editorial italic font-normal text-[#7550C8] dark:text-[#B99CFF]">
                 Different paths forward.
               </span>
             </h2>
-            <p className="text-base text-[#77727F] dark:text-[#9490A0] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
               Whether you're preparing for an examination, exploring a difficult concept or planning your next career step, Prabodha brings intelligent guidance into one connected experience.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {PRODUCT_PILLARS.map((pillar) => (
               <SpotlightCard
                 key={pillar.id}
                 onClick={() => handleNav(pillar.route as NavigationPage)}
-                className="p-8 rounded-3xl bg-white dark:bg-[#14121E] border border-[#EAE7EF] dark:border-[#272535] hover:border-[#7550C8]/60 shadow-soft-xs hover:shadow-soft transition-all duration-300 cursor-pointer space-y-4 flex flex-col justify-between group"
+                className="p-7 sm:p-9 rounded-[32px] sm:rounded-[36px] bg-white dark:bg-[#14121E] border border-[#E3DAF2] dark:border-[#272535] hover:border-[#7550C8]/60 shadow-[0_8px_30px_rgba(117,80,200,0.06)] hover:shadow-soft transition-all duration-300 cursor-pointer space-y-4 flex flex-col justify-between group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
@@ -327,17 +333,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                     <ArrowUpRight className="w-4 h-4 text-[#77727F] group-hover:text-[#7550C8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#19171F] dark:text-white group-hover:text-[#7550C8] transition-colors">
+                  <h3 className="text-xl font-bold text-[#110E1B] dark:text-white group-hover:text-[#7550C8] transition-colors">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#475569] dark:text-[#CBD5E1] font-light leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
                     {pillar.description}
                   </p>
 
                   <div className="pt-2 space-y-1.5 border-t border-[#EAE7EF] dark:border-[#232132]">
                     {pillar.capabilities.slice(0, 3).map((cap, i) => (
-                      <div key={i} className="text-xs text-[#77727F] dark:text-[#9490A0] flex items-center gap-2">
+                      <div key={i} className="text-xs text-[#383347] dark:text-[#CBD5E1] flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#7550C8]" />
                         <span>{cap}</span>
                       </div>
@@ -386,30 +392,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
       {/* ========================================================= */}
       {/* SECTION 6: COMPETITIVE EXAM INTELLIGENCE (LIVE CODE UI!)  */}
       {/* ========================================================= */}
-      <section className="py-24 bg-[#FCFBFE] dark:bg-[#0B0A0F]">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+      <section className="py-20 sm:py-24 bg-[#F5F2FA] dark:bg-[#0B0A0F]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12 space-y-4">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF]">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF] font-bold">
               Pillar 01 • Exam Topology & Analytics
             </span>
-            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#19171F] dark:text-white leading-[1.08]">
+            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#110E1B] dark:text-white leading-[1.08]">
               Prepare with a clearer <br />
               <span className="font-editorial italic font-normal text-[#7550C8] dark:text-[#B99CFF]">
                 understanding of the journey.
               </span>
             </h2>
-            <p className="text-base text-[#77727F] dark:text-[#9490A0] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
               Explore examination requirements, organise preparation, practise important concepts and identify where your understanding needs more attention.
             </p>
           </div>
 
-          {/* Living Code-Driven Exam Matrix (Replaces flat photo) */}
-          <SpotlightCard className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#14121E] border border-[#EAE7EF] dark:border-[#272535] shadow-soft space-y-8">
+          {/* Living Code-Driven Exam Matrix: Apple Squircle Card */}
+          <SpotlightCard className="p-6 sm:p-10 rounded-[32px] sm:rounded-[36px] bg-white dark:bg-[#14121E] border border-[#E3DAF2] dark:border-[#272535] shadow-[0_8px_30px_rgba(117,80,200,0.06)] space-y-8">
             
             {/* Exam Selector Tabs with Sliding Indicator */}
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#EAE7EF] dark:border-[#242232] pb-4">
-              <div className="flex items-center gap-2 overflow-x-auto p-1 rounded-full bg-[#F5F4F7] dark:bg-[#1A1826] border border-[#EAE7EF] dark:border-[#29263A]">
+              <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto p-1 rounded-full bg-[#F5F1FD] dark:bg-[#1A1826] border border-[#E2D9F3] dark:border-[#29263A] max-w-full">
                 {[
                   { id: 'upsc-cse', label: 'UPSC Civil Services' },
                   { id: 'rbi-grade-b', label: 'RBI Grade B' },
@@ -422,10 +428,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                     <button
                       key={item.id}
                       onClick={() => setActiveExamTab(item.id as any)}
-                      className={`relative px-4 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                      className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-colors whitespace-nowrap ${
                         isActive
                           ? 'text-white'
-                          : 'text-[#77727F] dark:text-[#9490A0] hover:text-[#19171F] dark:hover:text-white'
+                          : 'text-[#484255] dark:text-[#9490A0] hover:text-[#110E1B] dark:hover:text-white'
                       }`}
                     >
                       {isActive && (
@@ -447,41 +453,41 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
             </div>
 
             {/* Interactive Exam Topology Breakdown */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
               
-              <div className="p-6 rounded-2xl bg-[#FCFBFE] dark:bg-[#181625] border border-[#EAE7EF] dark:border-[#29263A] space-y-3">
-                <span className="text-[10px] font-mono uppercase text-[#7550C8] font-bold">Topology Node 01</span>
-                <h4 className="text-sm font-bold text-[#19171F] dark:text-white">Constitutional Basic Structure</h4>
-                <p className="text-xs text-[#77727F] dark:text-[#9490A0] font-light">
+              <div className="p-6 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#181625] border border-[#E3DAF2] dark:border-[#29263A] space-y-3">
+                <span className="text-[10px] font-mono uppercase text-[#7550C8] dark:text-[#B99CFF] font-bold">Topology Node 01</span>
+                <h4 className="text-sm font-bold text-[#110E1B] dark:text-white">Constitutional Basic Structure</h4>
+                <p className="text-xs text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
                   Axiomatic anchors linking Part III rights with judicial review and separation of powers.
                 </p>
-                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#77727F]">
+                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#585366] dark:text-[#A7A3B4]">
                   <span>Historical Yield: High</span>
-                  <span className="text-emerald-500 font-bold">Verified Invariant</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">Verified Invariant</span>
                 </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#FCFBFE] dark:bg-[#181625] border border-[#EAE7EF] dark:border-[#29263A] space-y-3">
-                <span className="text-[10px] font-mono uppercase text-[#7550C8] font-bold">Topology Node 02</span>
-                <h4 className="text-sm font-bold text-[#19171F] dark:text-white">Macro-Fiscal Policy Multipliers</h4>
-                <p className="text-xs text-[#77727F] dark:text-[#9490A0] font-light">
+              <div className="p-6 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#181625] border border-[#E3DAF2] dark:border-[#29263A] space-y-3">
+                <span className="text-[10px] font-mono uppercase text-[#7550C8] dark:text-[#B99CFF] font-bold">Topology Node 02</span>
+                <h4 className="text-sm font-bold text-[#110E1B] dark:text-white">Macro-Fiscal Policy Multipliers</h4>
+                <p className="text-xs text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
                   Causal linkages between interest rate transmission, public capital capex, and inflation dynamics.
                 </p>
-                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#77727F]">
+                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#585366] dark:text-[#A7A3B4]">
                   <span>Difficulty: High Order</span>
-                  <span className="text-emerald-500 font-bold">Verified Invariant</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">Verified Invariant</span>
                 </div>
               </div>
 
-              <div className="p-6 rounded-2xl bg-[#FCFBFE] dark:bg-[#181625] border border-[#EAE7EF] dark:border-[#29263A] space-y-3">
-                <span className="text-[10px] font-mono uppercase text-[#7550C8] font-bold">Topology Node 03</span>
-                <h4 className="text-sm font-bold text-[#19171F] dark:text-white">Administrative Ethics & Case Studies</h4>
-                <p className="text-xs text-[#77727F] dark:text-[#9490A0] font-light">
+              <div className="p-6 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#181625] border border-[#E3DAF2] dark:border-[#29263A] space-y-3">
+                <span className="text-[10px] font-mono uppercase text-[#7550C8] dark:text-[#B99CFF] font-bold">Topology Node 03</span>
+                <h4 className="text-sm font-bold text-[#110E1B] dark:text-white">Administrative Ethics & Case Studies</h4>
+                <p className="text-xs text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
                   Multi-stakeholder ethical dilemma frameworks designed for GS Paper 4 decision models.
                 </p>
-                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#77727F]">
+                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#585366] dark:text-[#A7A3B4]">
                   <span>Evaluation: Socratic</span>
-                  <span className="text-emerald-500 font-bold">Verified Invariant</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">Verified Invariant</span>
                 </div>
               </div>
 
@@ -489,12 +495,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
 
             {/* Action Bar */}
             <div className="pt-4 border-t border-[#EAE7EF] dark:border-[#242232] flex flex-wrap items-center justify-between gap-4">
-              <span className="text-xs text-[#77727F]">
+              <span className="text-xs text-[#383347] dark:text-[#CBD5E1]">
                 Access 15 years of structured question deconstruction and syllabus topologies.
               </span>
               <button
                 onClick={() => handleNav('exams')}
-                className="px-6 py-2.5 rounded-full bg-[#19171F] dark:bg-white text-white dark:text-[#19171F] hover:bg-[#7550C8] text-xs font-semibold flex items-center gap-2 transition-all"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-[#110E1B] dark:bg-white text-white dark:text-[#110E1B] hover:bg-[#7550C8] text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-soft-xs"
               >
                 <span>Explore All Examination Dossiers</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -509,29 +515,29 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
       {/* ========================================================= */}
       {/* SECTION 8: CAREER INTELLIGENCE (INTERACTIVE RADAR UI)     */}
       {/* ========================================================= */}
-      <section className="py-24 bg-white dark:bg-[#100F17] border-y border-[#EAE7EF] dark:border-[#222030]">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+      <section className="py-20 sm:py-24 bg-white/70 dark:bg-[#100F17] border-y border-[#E4DCF0] dark:border-[#222030] backdrop-blur-sm">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12 space-y-4">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF]">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF] font-bold">
               Pillar 03 • Career Intelligence
             </span>
-            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#19171F] dark:text-white leading-[1.08]">
+            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#110E1B] dark:text-white leading-[1.08]">
               Turn what you know into <br />
               <span className="font-editorial italic font-normal text-[#7550C8] dark:text-[#B99CFF]">
                 where you can go.
               </span>
             </h2>
-            <p className="text-base text-[#77727F] dark:text-[#9490A0] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
               Understand your current skills, explore career directions and discover practical steps towards your professional goals.
             </p>
           </div>
 
-          {/* Living Code-Driven Career Trajectory Interface (Replaces flat photo) */}
-          <SpotlightCard className="p-8 sm:p-10 rounded-3xl bg-[#FCFBFE] dark:bg-[#14121E] border border-[#EAE7EF] dark:border-[#272535] shadow-soft space-y-8">
+          {/* Living Code-Driven Career Trajectory Interface: Apple Squircle Card */}
+          <SpotlightCard className="p-6 sm:p-10 rounded-[32px] sm:rounded-[36px] bg-white dark:bg-[#14121E] border border-[#E3DAF2] dark:border-[#272535] shadow-[0_8px_30px_rgba(117,80,200,0.06)] space-y-8">
             
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#EAE7EF] dark:border-[#242232] pb-4">
-              <div className="flex items-center gap-2 overflow-x-auto p-1 rounded-full bg-white dark:bg-[#1A1826] border border-[#EAE7EF] dark:border-[#29263A]">
+              <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto p-1 rounded-full bg-[#F5F1FD] dark:bg-[#1A1826] border border-[#E2D9F3] dark:border-[#29263A] max-w-full">
                 {CAREER_TRACKS.map((track, i) => {
                   const isActive = activeCareerIndex === i;
 
@@ -539,10 +545,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                     <button
                       key={track.id}
                       onClick={() => setActiveCareerIndex(i)}
-                      className={`relative px-4 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                      className={`relative px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold transition-colors whitespace-nowrap ${
                         isActive
                           ? 'text-white'
-                          : 'text-[#77727F] dark:text-[#9490A0] hover:text-[#19171F] dark:hover:text-white'
+                          : 'text-[#484255] dark:text-[#9490A0] hover:text-[#110E1B] dark:hover:text-white'
                       }`}
                     >
                       {isActive && (
@@ -567,36 +573,36 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <div className="lg:col-span-7 space-y-4">
-                <span className="text-xs font-mono text-[#7550C8] uppercase font-bold">
+                <span className="text-xs font-mono text-[#7550C8] dark:text-[#B99CFF] uppercase font-bold">
                   {currentCareer.domain}
                 </span>
-                <h3 className="text-2xl font-bold text-[#19171F] dark:text-white">
+                <h3 className="text-2xl font-bold text-[#110E1B] dark:text-white">
                   {currentCareer.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#475569] dark:text-[#CBD5E1] font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
                   {currentCareer.overview}
                 </p>
 
-                <div className="p-4 rounded-xl bg-white dark:bg-[#181625] border border-[#EAE7EF] dark:border-[#29263A] text-xs text-[#19171F] dark:text-[#F3F2F8]">
+                <div className="p-4 rounded-2xl bg-[#FAF8FE] dark:bg-[#181625] border border-[#E3DAF2] dark:border-[#29263A] text-xs text-[#110E1B] dark:text-[#F3F2F8]">
                   <strong>Market Reality:</strong> {currentCareer.marketReality}
                 </div>
               </div>
 
               {/* Animated Competency Bars */}
-              <div className="lg:col-span-5 p-6 rounded-2xl bg-white dark:bg-[#181625] border border-[#EAE7EF] dark:border-[#29263A] space-y-4">
-                <span className="text-xs font-mono uppercase text-[#77727F] font-bold block">
+              <div className="lg:col-span-5 p-6 rounded-2xl sm:rounded-3xl bg-[#FAF8FE] dark:bg-[#181625] border border-[#E3DAF2] dark:border-[#29263A] space-y-4">
+                <span className="text-xs font-mono uppercase text-[#585366] dark:text-[#A7A3B4] font-bold block">
                   Core Competency Benchmark Weights
                 </span>
 
                 {currentCareer.competencyPillars.map((pillar, i) => (
                   <div key={i} className="space-y-1.5">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-[#19171F] dark:text-white">{pillar.name}</span>
-                      <span className="text-[10px] font-mono text-[#7550C8] font-semibold bg-[#F7F3FD] dark:bg-[#25203A] px-2 py-0.5 rounded">
+                      <span className="font-bold text-[#110E1B] dark:text-white">{pillar.name}</span>
+                      <span className="text-[10px] font-mono text-[#7550C8] dark:text-[#B99CFF] font-semibold bg-[#F2EDFB] dark:bg-[#25203A] px-2 py-0.5 rounded-md">
                         {pillar.proficiency}
                       </span>
                     </div>
-                    <div className="w-full h-2 rounded-full bg-[#F5F4F7] dark:bg-[#201D2C] overflow-hidden">
+                    <div className="w-full h-2 rounded-full bg-[#EAE5F5] dark:bg-[#201D2C] overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${85 + i * 5}%` }}
@@ -610,8 +616,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
 
             </div>
 
-            <div className="pt-4 border-t border-[#EAE7EF] dark:border-[#242232] flex items-center justify-between text-xs">
-              <span className="text-[#77727F]">
+            <div className="pt-4 border-t border-[#EAE7EF] dark:border-[#242232] flex flex-wrap items-center justify-between gap-3 text-xs">
+              <span className="text-[#383347] dark:text-[#CBD5E1]">
                 Inspect production capstone specifications and skill-gap audits.
               </span>
               <button
@@ -631,37 +637,37 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
       {/* ========================================================= */}
       {/* SECTION 9: AI MENTORSHIP (LIVING JOURNEY STEPPER COMPONENT) */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-24 bg-[#FAF8FE]/80 dark:bg-[#0B0A0F]">
+      <section className="py-20 sm:py-24 bg-[#F5F2FA] dark:bg-[#0B0A0F]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12 space-y-4">
             <span className="text-[11px] font-mono uppercase tracking-widest text-[#7550C8] dark:text-[#B99CFF] font-bold">
               Pillar 04 • Autonomous AI Mentorship
             </span>
-            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#16131F] dark:text-white leading-[1.08]">
+            <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#110E1B] dark:text-white leading-[1.08]">
               Progress needs <br />
               <span className="font-editorial italic font-normal text-[#7550C8] dark:text-[#B99CFF]">
                 direction.
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-[#6E6978] dark:text-[#9490A0] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed">
               Define meaningful goals, inspect diagnostic data, and execute high-yield study actions with personalized AI guidance.
             </p>
           </div>
 
-          {/* Living Interactive 5-Stage Stepper (Fixes Photo 1 Flat List) */}
+          {/* Living Interactive 5-Stage Stepper: Zero Timer, Zero Underline */}
           <MentorshipStepperJourney onLaunchMentorship={() => handleNav('mentorship')} />
 
         </div>
       </section>
 
       {/* ========================================================= */}
-      {/* SECTION 10: CLOSING INVITATION (BALANCED SHOWCASE)        */}
+      {/* SECTION 10: CLOSING INVITATION (APPLE CURVY SHOWCASE)      */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 bg-[#FAF8FE] dark:bg-[#100F17] border-t border-[#E4DCF0] dark:border-[#222030] relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-[#F5F2FA] dark:bg-[#0B0A0F] border-t border-[#E4DCF0] dark:border-[#222030] relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <SpotlightCard className="p-8 sm:p-12 lg:p-16 rounded-3xl bg-white/90 dark:bg-[#151221]/90 border border-[#DDD2F7] dark:border-[#2D2A42] shadow-[0_12px_40px_-6px_rgba(117,80,200,0.12)] relative overflow-hidden">
+          <SpotlightCard className="p-6 sm:p-12 lg:p-16 rounded-[32px] sm:rounded-[36px] bg-white/95 dark:bg-[#151221]/95 border border-[#E3DAF2] dark:border-[#2D2A42] shadow-[0_12px_45px_rgba(117,80,200,0.08)] relative overflow-hidden">
             
             {/* Subtle radial glow background */}
             <div className="pointer-events-none absolute -right-20 -bottom-20 w-[450px] h-[450px] bg-gradient-to-tl from-[#7550C8]/15 via-[#EDE6FB]/20 to-transparent rounded-full blur-3xl -z-0" />
@@ -677,21 +683,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                   </span>
                 </div>
 
-                <h2 className="text-3xl sm:text-5xl font-sans font-bold tracking-tight text-[#16131F] dark:text-white leading-[1.08]">
+                <h2 className="text-3xl sm:text-5xl font-sans font-extrabold tracking-tight text-[#110E1B] dark:text-white leading-[1.08]">
                   Your next step starts with <br />
                   <span className="font-editorial italic font-normal text-[#7550C8] dark:text-[#B99CFF]">
                     understanding.
                   </span>
                 </h2>
 
-                <p className="text-sm sm:text-base text-[#595466] dark:text-[#9490A0] font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
+                <p className="text-sm sm:text-base text-[#383347] dark:text-[#CBD5E1] font-normal leading-relaxed max-w-lg mx-auto lg:mx-0">
                   Discover a calmer, more connected approach to competitive examination preparation, Socratic concept mastery, and long-term career growth. Grounded strictly in first principles.
                 </p>
 
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
                   <button
                     onClick={() => handleNav('platform')}
-                    className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#16131F] dark:bg-white text-white dark:text-[#16131F] hover:bg-[#7550C8] dark:hover:bg-[#EDE6FB] text-xs sm:text-sm font-semibold transition-all shadow-soft active:scale-95 flex items-center justify-center gap-2 group"
+                    className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#110E1B] dark:bg-white text-white dark:text-[#110E1B] hover:bg-[#7550C8] dark:hover:bg-[#EDE6FB] text-xs sm:text-sm font-semibold transition-all shadow-soft active:scale-95 flex items-center justify-center gap-2 group"
                   >
                     <span>Explore the Platform</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -699,14 +705,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
 
                   <button
                     onClick={onOpenContact}
-                    className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white dark:bg-[#1A1629] text-[#16131F] dark:text-[#F3F2F8] text-xs sm:text-sm font-medium border border-[#E2D9F3] dark:border-[#322A4A] hover:border-[#7550C8] transition-all shadow-soft-xs flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white dark:bg-[#1A1629] text-[#110E1B] dark:text-[#F3F2F8] text-xs sm:text-sm font-medium border border-[#E3DAF2] dark:border-[#322A4A] hover:border-[#7550C8] transition-all shadow-soft-xs flex items-center justify-center gap-2"
                   >
                     <span>Contact & Inquiries</span>
                   </button>
                 </div>
 
                 {/* 3 micro-trust items */}
-                <div className="pt-3 border-t border-[#EAE7EF] dark:border-[#252236] flex flex-wrap items-center justify-center lg:justify-start gap-4 text-[11px] font-mono text-[#77727F] dark:text-[#9A95A8]">
+                <div className="pt-3 border-t border-[#EAE7EF] dark:border-[#252236] flex flex-wrap items-center justify-center lg:justify-start gap-4 text-[11px] font-mono text-[#585366] dark:text-[#A7A3B4]">
                   <span className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
                     <span>Socratic Guided Scaffolding</span>
@@ -727,7 +733,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                 {/* Radiant backdrop blur ring */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#7550C8]/20 via-[#B99CFF]/15 to-transparent rounded-full blur-2xl -z-0" />
 
-                <div className="relative w-56 sm:w-72 lg:w-80 max-w-full">
+                <div className="relative w-52 sm:w-72 lg:w-80 max-w-full mx-auto">
                   <img
                     src="/new-assets/Triumphant Student and Robot Mascot.png"
                     alt="Prabodha Triumphant Student and Socratic Robot Mascot"
@@ -742,7 +748,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                     className="absolute -bottom-2 -left-2 sm:left-0 bg-white/95 dark:bg-[#1C182B]/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#DDD2F7] dark:border-[#3A2E59] shadow-soft flex items-center gap-2"
                   >
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] font-mono font-bold text-[#16131F] dark:text-white">
+                    <span className="text-[10px] font-mono font-bold text-[#110E1B] dark:text-white">
                       Invariant Mastered • 100% Retained
                     </span>
                   </motion.div>

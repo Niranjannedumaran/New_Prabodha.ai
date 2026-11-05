@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 interface PrabodhaLogoProps {
   className?: string;
@@ -13,6 +14,15 @@ export const PrabodhaLogo: React.FC<PrabodhaLogoProps> = ({
   size = 'md',
   showTagline = false,
 }) => {
+  let isDark = false;
+  try {
+    const themeContext = useTheme();
+    isDark = themeContext.isDark;
+  } catch {
+    // Graceful fallback if rendered outside ThemeProvider
+    isDark = false;
+  }
+
   const iconSizes = {
     sm: 'w-7 h-7',
     md: 'w-9 h-9',
@@ -22,21 +32,23 @@ export const PrabodhaLogo: React.FC<PrabodhaLogoProps> = ({
 
   const textSizes = {
     sm: 'text-base',
-    md: 'text-xl',
-    lg: 'text-2xl',
-    xl: 'text-3xl',
+    md: 'text-xl sm:text-2xl',
+    lg: 'text-2xl sm:text-3xl',
+    xl: 'text-3xl sm:text-4xl',
   };
 
-  // Determine text color based on variant
-  // 'light' = white text (for dark backgrounds like footer)
-  // 'dark' = dark text (for light backgrounds)
-  // 'auto' = adapts automatically (dark in light theme, white in dark theme)
-  const textColorClass =
+  // High-contrast, crystal-clear text color resolution:
+  // - If variant === 'light': crisp pure white (for dark footer/banner surfaces)
+  // - If variant === 'dark': deep solid obsidian black #0F0C1B (for light paper surfaces)
+  // - If variant === 'auto': automatically checks theme context AND uses dark: utility
+  const textClass =
     variant === 'light'
       ? 'text-white'
       : variant === 'dark'
-      ? 'text-[#16131F]'
-      : 'text-[#16131F] dark:text-white';
+      ? 'text-[#0F0C1B]'
+      : isDark
+      ? 'text-white'
+      : 'text-[#0F0C1B] dark:text-white';
 
   return (
     <div className={`inline-flex items-center gap-2.5 sm:gap-3 font-display select-none group cursor-pointer ${className}`}>
@@ -67,21 +79,21 @@ export const PrabodhaLogo: React.FC<PrabodhaLogoProps> = ({
         </div>
       </div>
 
-      {/* Brand Name & AI Pill Badge - Guaranteed Crystal-Clear Visibility */}
+      {/* Brand Name & AI Pill Badge - Guaranteed Ultra-Crisp Legibility */}
       <div className="flex flex-col">
-        <div className="flex items-center gap-1.5 leading-none">
+        <div className="flex items-center gap-1.5 sm:gap-2 leading-none">
           <span
-            className={`font-black tracking-tight ${textColorClass} ${textSizes[size]} transition-colors duration-200 group-hover:text-[#7550C8] dark:group-hover:text-[#B99CFF]`}
+            className={`font-black tracking-tight ${textClass} ${textSizes[size]} transition-colors duration-200 group-hover:text-[#7550C8] dark:group-hover:text-[#B99CFF] drop-shadow-xs`}
           >
             Prabodha
           </span>
-          <span className="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-gradient-to-r from-[#7550C8] to-[#9B74F3] text-white shadow-xs font-mono">
+          <span className="text-[10px] sm:text-[11px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-gradient-to-r from-[#7550C8] to-[#9B74F3] text-white shadow-xs font-mono">
             AI
           </span>
         </div>
 
         {showTagline && (
-          <span className="text-[10px] text-[#595466] dark:text-white/60 tracking-wider uppercase font-medium mt-0.5">
+          <span className="text-[10px] text-[#595466] dark:text-[#C5BED3] tracking-wider uppercase font-semibold mt-0.5">
             Learn • Explore • Evolve
           </span>
         )}

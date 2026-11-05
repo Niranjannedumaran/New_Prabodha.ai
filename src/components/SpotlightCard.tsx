@@ -8,6 +8,7 @@ interface SpotlightCardProps {
   onClick?: () => void;
   interactive?: boolean;
   tilt?: boolean;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -21,6 +22,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   onClick,
   interactive = true,
   tilt = false,
+  style,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -68,6 +70,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
         rotateX: tilt ? rotateX : 0,
         rotateY: tilt ? rotateY : 0,
         transformStyle: tilt ? 'preserve-3d' : 'flat',
+        ...style,
       }}
       whileHover={interactive ? { y: -3, transition: { duration: 0.25, ease: 'easeOut' } } : undefined}
       className={`group relative overflow-hidden rounded-3xl transition-colors duration-200 ${className}`}
