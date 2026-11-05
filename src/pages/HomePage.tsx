@@ -33,7 +33,7 @@ import { BrandEmblem } from '../components/BrandEmblem';
 import { SpotlightCard } from '../components/SpotlightCard';
 import { HeroSpotlight } from '../components/HeroSpotlight';
 import { MagneticButton } from '../components/MagneticButton';
-import { IndustryMarquee } from '../components/IndustryMarquee';
+import { AppleHeroShowcase } from '../components/AppleHeroShowcase';
 import { SocraticReasoningSandbox } from '../components/SocraticReasoningSandbox';
 import { MentorshipStepperJourney } from '../components/MentorshipStepperJourney';
 import { NavigationPage } from '../types';
@@ -144,13 +144,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
   const currentMentorship = mentorshipDetails[activeMentorshipIndex] || mentorshipDetails[0];
 
   return (
-    <div className="pt-24 pb-20 bg-[#FCFBFE] dark:bg-[#0B0A0F] text-[#19171F] dark:text-[#F3F2F8] selection:bg-[#EDE6FB] selection:text-[#51349A] transition-colors duration-300">
+    <div className="pt-24 pb-20 bg-[#F5F2FA] dark:bg-[#0B0A0F] text-[#16131F] dark:text-[#F3F2F8] selection:bg-[#EDE6FB] selection:text-[#51349A] transition-colors duration-300">
       
       {/* ========================================================= */}
-      {/* SECTION 2: HERO — PREMIUM INTERACTIVE WITH MAGNETIC HOVER  */}
+      {/* SECTION 2: HERO — APPLE-STYLE CURVY CARDS SHOWCASE        */}
       {/* ========================================================= */}
-      <HeroSpotlight className="pt-16 pb-20 md:pt-24 md:pb-32">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8 relative z-10 text-center space-y-8">
+      <HeroSpotlight className="pt-16 pb-20 md:pt-24 md:pb-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
           
           {/* Subtle Announcement Pill */}
           <motion.div
@@ -217,8 +217,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
             </MagneticButton>
           </motion.div>
 
-          {/* Top-Grade Continuous Sideways Sliding Marquee (Placed "Little Down") */}
-          <IndustryMarquee className="pt-14 sm:pt-20" />
+          {/* Apple-Style Curvy Bento Cards Showcase (Desktop & Mobile Optimized) */}
+          <AppleHeroShowcase
+            onExplore={() => handleNav('exams')}
+            onSocraticDemo={() => handleNav('learning')}
+          />
 
         </div>
       </HeroSpotlight>

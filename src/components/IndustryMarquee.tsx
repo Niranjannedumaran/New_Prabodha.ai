@@ -80,3 +80,4 @@ export const IndustryMarquee: React.FC<{ className?: string }> = ({ className = 
     </div>
   );
 };
+

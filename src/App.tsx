@@ -5,7 +5,6 @@ import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { LegalModal } from './components/LegalModal';
 import { ScrollProgress } from './components/ScrollProgress';
-import { PrabodhaCursor } from './components/PrabodhaCursor';
 import { NavigationPage } from './types';
 
 // Multi-Page Views (Complete 10-Surface Platform Architecture)
@@ -67,10 +66,7 @@ const MainAppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FCFBFE] dark:bg-[#0B0A0F] text-[#19171F] dark:text-[#F3F2F8] flex flex-col selection:bg-[#EDE6FB] selection:text-[#51349A] dark:selection:bg-[#7550C8] dark:selection:text-white transition-colors duration-300">
-      {/* Premium Custom Cursor (desktop only) */}
-      <PrabodhaCursor />
-
+    <div className="min-h-screen bg-[#F5F2FA] dark:bg-[#0B0A0F] text-[#16131F] dark:text-[#F3F2F8] flex flex-col selection:bg-[#EDE6FB] selection:text-[#51349A] dark:selection:bg-[#7550C8] dark:selection:text-white transition-colors duration-300">
       {/* Top Reading Progress Bar */}
       <ScrollProgress />
 

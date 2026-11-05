@@ -81,27 +81,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   text-decoration: none !important;
 }
 
-/* =============================================== */
-/* Premium Custom Cursor — Hide OS cursor on desktop */
-/* =============================================== */
-@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
-  *,
-  *::before,
-  *::after {
-    cursor: none !important;
-  }
-}
-
-/* Ensure touch devices always get the normal cursor */
-@media (hover: none), (pointer: coarse) {
-  *,
-  *::before,
-  *::after {
-    cursor: auto !important;
-  }
-}
-
-/* Data attribute for cursor-reactive elements */
-[data-cursor-hover] {
-  cursor: none !important;
+/* Natural, high-precision finger pointing cursor for all interactive elements */
+button,
+a,
+[role="button"],
+.cursor-pointer,
+[data-cursor-hover],
+input[type="submit"],
+input[type="button"] {
+  cursor: pointer !important;
 }
