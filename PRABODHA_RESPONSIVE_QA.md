@@ -66,3 +66,4 @@ The website is validated across 14 rigorous viewport thresholds:
    - Complex SVG blur filters (`feGaussianBlur stdDeviation > 8`) are reduced on mobile to maintain 60 FPS scrolling.
 
 *Document Author: Mobile Ergonomics Specialist & Lead QA Engineer*
+

@@ -50,3 +50,4 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 };
 
 export const useSound = () => useContext(SoundContext);
+

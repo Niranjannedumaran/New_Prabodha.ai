@@ -134,3 +134,4 @@ export const CompanyVisionSection: React.FC<{ onNavigateToPlatform?: () => void 
     </section>
   );
 };
+

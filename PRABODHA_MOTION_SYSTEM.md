@@ -120,3 +120,4 @@ class SoundFeedbackEngine {
   - No continuous rotation or parallax is applied.
 
 *Document Author: GSAP Motion Director & Creative Frontend Engineer*
+

@@ -33,6 +33,7 @@ import { BrandEmblem } from '../components/BrandEmblem';
 import { SpotlightCard } from '../components/SpotlightCard';
 import { HeroSpotlight } from '../components/HeroSpotlight';
 import { MagneticButton } from '../components/MagneticButton';
+import { EditorialHeroStage } from '../components/EditorialHeroStage';
 import { AppleHeroShowcase } from '../components/AppleHeroShowcase';
 import { IndustryMarquee } from '../components/IndustryMarquee';
 import { SocraticReasoningSandbox } from '../components/SocraticReasoningSandbox';
@@ -314,128 +315,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
   const [activePillarVisual, setActivePillarVisual] = useState<'exams' | 'learning' | 'careers' | 'mentorship'>('exams');
 
   return (
-    <div className="pt-24 pb-20 bg-[#F5F2FA] dark:bg-[#0B0A0F] text-[#16131F] dark:text-[#F3F2F8] selection:bg-[#EDE6FB] selection:text-[#51349A] transition-colors duration-300">
+    <div className="pt-0 pb-20 bg-[#F5F2FA] dark:bg-[#0B0A0F] text-[#16131F] dark:text-[#F3F2F8] selection:bg-[#EDE6FB] selection:text-[#51349A] transition-colors duration-300">
       
       {/* ========================================================= */}
-      {/* SECTION 2: HERO — APPLE-STYLE CURVY CARDS SHOWCASE        */}
+      {/* SECTION 02: MASTER EDITORIAL HERO STAGE (TWO26 + DOKO)    */}
       {/* ========================================================= */}
-      <HeroSpotlight className="pt-16 pb-20 md:pt-24 md:pb-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
-          
-          {/* Subtle Announcement Pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 dark:bg-[#14121E]/90 backdrop-blur-sm border border-[#E4DCF0] dark:border-[#272535] shadow-soft-xs hover:border-[#7550C8]/50 transition-colors"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#7550C8] animate-pulse" />
-            <span className="text-xs font-medium text-[#6E6978] dark:text-[#9490A0]">
-              The AI Platform for Learning, Exam Intelligence & Career Growth
-            </span>
-            <BrandEmblem size="sm" animated={true} />
-          </motion.div>
-
-          {/* Master Kinetic Headline with masked word reveals */}
-          <div className="space-y-5 max-w-4xl mx-auto pt-2">
-            <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-sans font-black tracking-tight text-[#110E1B] dark:text-white leading-[1.04]">
-              <span className="inline-block overflow-hidden align-top mr-2 sm:mr-3">
-                <motion.span
-                  initial={{ y: '100%' }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block"
-                >
-                  Learn.
-                </motion.span>
-              </span>
-              <span className="inline-block overflow-hidden align-top mr-2 sm:mr-3">
-                <motion.span
-                  initial={{ y: '100%' }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.65, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block"
-                >
-                  Prepare.
-                </motion.span>
-              </span>
-              <span className="inline-block overflow-hidden align-top mr-2 sm:mr-3">
-                <motion.span
-                  initial={{ y: '100%' }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.65, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block text-[#7550C8] dark:text-[#B99CFF]"
-                >
-                  Grow.
-                </motion.span>
-              </span>
-              <span className="inline-block overflow-hidden align-top">
-                <motion.span
-                  initial={{ y: '100%' }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.65, delay: 0.46, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block font-editorial italic font-normal text-[#8E5CFF] dark:text-[#D4BFFC]"
-                >
-                  Evolve.
-                </motion.span>
-              </span>
-            </h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-              className="text-base sm:text-lg text-[#555060] dark:text-[#A7A3B4] font-normal leading-relaxed max-w-2xl mx-auto"
-            >
-              An AI-powered platform for intelligent learning, competitive examination preparation and career growth. Grounded in first-principles Socratic reasoning, not rote memorization.
-            </motion.p>
-          </div>
-
-          {/* Primary Actions — Magnetic Hover Effect */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center justify-center gap-4 pt-2"
-          >
-            <MagneticButton
-              onClick={() => handleNav('platform')}
-              className="px-7 py-3.5 rounded-full bg-[#16131F] dark:bg-white text-white dark:text-[#16131F] hover:bg-[#7550C8] dark:hover:bg-[#EDE6FB] dark:hover:text-[#7550C8] text-xs sm:text-sm font-semibold transition-colors duration-200 shadow-soft active:scale-[0.97]"
-            >
-              <span>Explore the Platform</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </MagneticButton>
-
-            <MagneticButton
-              onClick={() => {
-                const el = document.getElementById('socratic-demo');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="px-6 py-3.5 rounded-full bg-white/90 dark:bg-[#14121E]/90 backdrop-blur-sm hover:bg-[#F7F3FD] dark:hover:bg-[#1C1A29] text-[#16131F] dark:text-[#F3F2F8] text-xs sm:text-sm font-medium border border-[#E4DCF0] dark:border-[#272535] hover:border-[#7550C8]/60 transition-colors duration-200 shadow-soft-xs"
-            >
-              <Sparkles className="w-4 h-4 text-[#7550C8]" />
-              <span>Experience Socratic Demo</span>
-            </MagneticButton>
-          </motion.div>
-
-          {/* Hero Intelligence Universe — Advanced SVG Motion Graphics */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="pt-4 pb-2"
-          >
-            <HeroIntelligenceUniverse />
-          </motion.div>
-
-          {/* Apple-Style Curvy Bento Cards Showcase (Desktop & Mobile Optimized) */}
-          <AppleHeroShowcase
-            onExplore={() => handleNav('exams')}
-            onSocraticDemo={() => handleNav('learning')}
-          />
-
-        </div>
-      </HeroSpotlight>
+      <EditorialHeroStage
+        onExplore={() => handleNav('platform')}
+        onSocraticDemo={() => {
+          const el = document.getElementById('socratic-demo');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
+      />
 
       {/* ========================================================= */}
       {/* SIDEWAYS MOVING CONTINUOUS CURRICULUM MARQUEE              */}

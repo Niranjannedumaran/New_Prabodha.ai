@@ -108,3 +108,4 @@ Rather than heavy artificial drop shadows, depth is achieved via:
 - **Zero Course Selling Constraint:** Strictly forbid "Course Batches", "₹ Pricing Tables", "Discount Coupons", or "Class 9-12 Tuition". Prabodha AI is an institutional intelligence platform.
 
 *Document Author: Senior Design Systems Architect & Brand Identity Designer*
+
