@@ -52,3 +52,4 @@ To satisfy the creative mandate, we must break this template-driven paradigm. We
 4. **Performance Target:** Mobile-first architecture with strict `overflow-x: hidden`, zero layout thrashing, and graceful degradation for `prefers-reduced-motion`.
 
 *Document Approved by: Lead Technical Architect & Systems Auditor*
+

@@ -92,3 +92,4 @@ To ensure the website feels like one continuous, purposeful narrative rather tha
 - [x] Zero course selling, zero batch pricing, zero school coaching strictly enforced.
 
 *Document Approved by: Creative Director & Lead Visual Designer*
+
