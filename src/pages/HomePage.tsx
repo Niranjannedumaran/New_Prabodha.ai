@@ -43,6 +43,11 @@ import { SocraticReasoningGraphic } from '../components/svg-motion/SocraticReaso
 import { ExamTopologyGraphic } from '../components/svg-motion/ExamTopologyGraphic';
 import { CareerTrajectoryGraphic } from '../components/svg-motion/CareerTrajectoryGraphic';
 import { MentorshipDialogueGraphic } from '../components/svg-motion/MentorshipDialogueGraphic';
+import { EditorialProblemSection } from '../components/EditorialProblemSection';
+import { CompanyVisionSection } from '../components/CompanyVisionSection';
+import { LearnerJourneyFlow } from '../components/LearnerJourneyFlow';
+import { FAQ } from '../components/FAQ';
+import { useSound } from '../context/SoundContext';
 import { NavigationPage } from '../types';
 import {
   PRODUCT_PILLARS,
@@ -59,6 +64,8 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact }) => {
+  const { playTick, playPop, playCrystal } = useSound();
+
   // Socratic Interactive Demonstration State
   const [activeProofIndex, setActiveProofIndex] = useState(0);
   const [activeProofStep, setActiveProofStep] = useState<1 | 2 | 3>(1);
@@ -230,6 +237,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
   const currentCareer = CAREER_TRACKS[activeCareerIndex] || CAREER_TRACKS[0];
 
   const handleNav = (page: NavigationPage) => {
+    playTick(920, 0.03);
     onNavigate(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -328,29 +336,60 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
             <BrandEmblem size="sm" animated={true} />
           </motion.div>
 
-          {/* Master Headline with staggered word entrance */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-5 max-w-4xl mx-auto"
-          >
-            <h1 className="text-4xl sm:text-6xl lg:text-[72px] font-sans font-extrabold tracking-tight text-[#16131F] dark:text-white leading-[1.06]">
-              Think deeper. Learn smarter. <br />
-              <span className="font-editorial italic font-normal text-[#7550C8] dark:text-[#B99CFF]">
-                Grow further.
+          {/* Master Kinetic Headline with masked word reveals */}
+          <div className="space-y-5 max-w-4xl mx-auto pt-2">
+            <h1 className="text-4xl sm:text-6xl lg:text-[76px] font-sans font-black tracking-tight text-[#110E1B] dark:text-white leading-[1.04]">
+              <span className="inline-block overflow-hidden align-top mr-2 sm:mr-3">
+                <motion.span
+                  initial={{ y: '100%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block"
+                >
+                  Learn.
+                </motion.span>
+              </span>
+              <span className="inline-block overflow-hidden align-top mr-2 sm:mr-3">
+                <motion.span
+                  initial={{ y: '100%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.65, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block"
+                >
+                  Prepare.
+                </motion.span>
+              </span>
+              <span className="inline-block overflow-hidden align-top mr-2 sm:mr-3">
+                <motion.span
+                  initial={{ y: '100%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.65, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block text-[#7550C8] dark:text-[#B99CFF]"
+                >
+                  Grow.
+                </motion.span>
+              </span>
+              <span className="inline-block overflow-hidden align-top">
+                <motion.span
+                  initial={{ y: '100%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.65, delay: 0.46, ease: [0.16, 1, 0.3, 1] }}
+                  className="inline-block font-editorial italic font-normal text-[#8E5CFF] dark:text-[#D4BFFC]"
+                >
+                  Evolve.
+                </motion.span>
               </span>
             </h1>
 
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-base sm:text-lg text-[#6E6978] dark:text-[#9490A0] font-light leading-relaxed max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="text-base sm:text-lg text-[#555060] dark:text-[#A7A3B4] font-normal leading-relaxed max-w-2xl mx-auto"
             >
-              Prabodha brings intelligent learning, competitive examination preparation and career guidance together in one calm, AI-powered platform.
+              An AI-powered platform for intelligent learning, competitive examination preparation and career growth. Grounded in first-principles Socratic reasoning, not rote memorization.
             </motion.p>
-          </motion.div>
+          </div>
 
           {/* Primary Actions — Magnetic Hover Effect */}
           <motion.div
@@ -404,7 +443,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
       <IndustryMarquee className="max-w-7xl mx-auto my-2 sm:my-6 px-3 sm:px-6" />
 
       {/* ========================================================= */}
-      {/* SECTION 3: BRAND PHILOSOPHY — CLARITY PATH SVG PIPELINE    */}
+      {/* SECTION 03: THE STRUCTURAL PROBLEM (EDITORIAL ASYMMETRY)  */}
+      {/* ========================================================= */}
+      <EditorialProblemSection />
+
+      {/* ========================================================= */}
+      {/* SECTION 04: PRABODHA'S APPROACH — CLARITY PATH PIPELINE   */}
       {/* ========================================================= */}
       <PrabodhaClarityPath />
 
@@ -585,7 +629,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
       </section>
 
       {/* ========================================================= */}
-      {/* SECTION 6: COMPETITIVE EXAM INTELLIGENCE (LIVE CODE UI!)  */}
+      {/* SECTION 07: THE LEARNER JOURNEY (FIRST-PRINCIPLES FLOW)   */}
+      {/* ========================================================= */}
+      <section className="py-20 sm:py-28 bg-[#FAF8FE] dark:bg-[#0B0912] border-b border-[#E4DCF0] dark:border-[#222030]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <LearnerJourneyFlow />
+        </div>
+      </section>
+
+      {/* ========================================================= */}
+      {/* SECTION 08: COMPANY VISION & INSTITUTIONAL DIRECTION       */}
+      {/* ========================================================= */}
+      <CompanyVisionSection onNavigateToPlatform={() => handleNav('platform')} />
+
+      {/* ========================================================= */}
+      {/* SECTION 09: COMPETITIVE EXAM INTELLIGENCE (LIVE CODE UI!) */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-24 bg-[#F5F2FA] dark:bg-[#0B0A0F]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -885,7 +943,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
       </section>
 
       {/* ========================================================= */}
-      {/* SECTION 10: CLOSING INVITATION (APPLE CURVY SHOWCASE)      */}
+      {/* SECTION 10: FREQUENTLY ASKED QUESTIONS (ACCESSIBLE ACCORDION) */}
+      {/* ========================================================= */}
+      <FAQ onOpenContact={onOpenContact} />
+
+      {/* ========================================================= */}
+      {/* SECTION 11: CLOSING INVITATION (GROW WITH DIRECTION)       */}
       {/* ========================================================= */}
       <section className="py-20 sm:py-28 bg-[#F5F2FA] dark:bg-[#0B0A0F] border-t border-[#E4DCF0] dark:border-[#222030] relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -907,9 +970,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenContact })
                 </div>
 
                 <h2 className="text-3xl sm:text-5xl font-sans font-extrabold tracking-tight text-[#110E1B] dark:text-white leading-[1.08]">
-                  Your next step starts with <br />
+                  Grow with direction. <br />
                   <span className="font-editorial italic font-normal text-[#7550C8] dark:text-[#B99CFF]">
-                    understanding.
+                    Master the invariants.
                   </span>
                 </h2>
 

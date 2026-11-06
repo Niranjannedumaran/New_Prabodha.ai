@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
+import { SoundProvider } from './context/SoundContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
@@ -174,7 +175,9 @@ const MainAppContent: React.FC = () => {
 export const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <MainAppContent />
+      <SoundProvider>
+        <MainAppContent />
+      </SoundProvider>
     </ThemeProvider>
   );
 };

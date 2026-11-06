@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { PrabodhaLogo } from './PrabodhaLogo';
-import { Menu, X, ArrowUpRight, Sun, Moon, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sun, Moon, Sparkles, Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import { useSound } from '../context/SoundContext';
 import { NavigationPage } from '../types';
 
 interface NavbarProps {
@@ -19,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { toggleTheme, isDark } = useTheme();
+  const { isSoundEnabled, toggleSound, playTick } = useSound();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   const handleLinkClick = (id: NavigationPage) => {
+    playTick(900, 0.025);
     onNavigate(id);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -91,10 +94,31 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2 xl:gap-3">
+            {/* Interactive Audio Toggle (Muted by Default) */}
+            <button
+              onClick={() => {
+                toggleSound();
+                playTick(1100, 0.04);
+              }}
+              className={`px-2.5 py-1.5 rounded-full text-[11px] font-mono font-medium flex items-center gap-1.5 border transition-all ${
+                isSoundEnabled
+                  ? 'bg-purple-50 dark:bg-purple-950/40 border-[#7550C8] text-[#7550C8] dark:text-[#B99CFF]'
+                  : 'border-[#E3DAF2] dark:border-[#272535] text-[#6E6978] dark:text-[#9490A0] hover:text-[#110E1B] dark:hover:text-white'
+              }`}
+              title={isSoundEnabled ? 'Mute sound effects' : 'Enable acoustic micro-feedback'}
+              aria-label={isSoundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
+            >
+              {isSoundEnabled ? <Volume2 className="w-3.5 h-3.5 text-[#7550C8] dark:text-[#B99CFF]" /> : <VolumeX className="w-3.5 h-3.5 opacity-60" />}
+              <span className="hidden xl:inline">{isSoundEnabled ? 'Sound On' : 'Sound Off'}</span>
+            </button>
+
             {/* Theme Toggle */}
             <button
-              onClick={toggleTheme}
+              onClick={() => {
+                playTick(800, 0.03);
+                toggleTheme();
+              }}
               className="p-2 rounded-full text-[#585366] dark:text-[#9490A0] hover:text-[#110E1B] dark:hover:text-white hover:bg-[#EDE6FB] dark:hover:bg-[#231F38]"
               style={{ transition: 'color 150ms ease, background-color 150ms ease' }}
               aria-label="Toggle theme"
@@ -136,9 +160,27 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Mobile Menu & Theme Toggle */}
-          <div className="flex sm:hidden items-center gap-2">
+          <div className="flex sm:hidden items-center gap-1.5">
             <button
-              onClick={toggleTheme}
+              onClick={() => {
+                toggleSound();
+                playTick(1100, 0.04);
+              }}
+              className={`p-2 rounded-full border ${
+                isSoundEnabled
+                  ? 'bg-purple-50 dark:bg-purple-950/40 border-[#7550C8] text-[#7550C8] dark:text-[#B99CFF]'
+                  : 'border-[#E3DAF2] dark:border-[#272535] text-[#6E6978] dark:text-[#9490A0]'
+              }`}
+              aria-label={isSoundEnabled ? 'Mute sound effects' : 'Enable sound effects'}
+            >
+              {isSoundEnabled ? <Volume2 className="w-4 h-4 text-[#7550C8]" /> : <VolumeX className="w-4 h-4 opacity-60" />}
+            </button>
+
+            <button
+              onClick={() => {
+                playTick(800, 0.03);
+                toggleTheme();
+              }}
               className="p-2 rounded-full text-[#585366] dark:text-[#9490A0]"
               aria-label="Toggle theme"
             >
